@@ -8,16 +8,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Food")
+@Table(name = "food")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class Food extends Product{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     private int weight;
 

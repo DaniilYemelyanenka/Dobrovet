@@ -7,16 +7,12 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Medicine")
+@Table(name = "medicine")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class Medicine extends Product{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String dosage;
 

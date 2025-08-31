@@ -1,27 +1,34 @@
-package by.dobrynin.dobrovet.Entity.products;
+package by.dobrynin.dobrovet.Entity;
 
+import by.dobrynin.dobrovet.Entity.persons.Client;
+import by.dobrynin.dobrovet.Entity.products.Product;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "products")
+@Table(name = "orders")
 @Data
-public class Product {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+//    @Column(name = "product_list")
+//    private List<Product> productList;
 
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    private Double price;
+    private int amount;
 
-    private Integer Quantity;
+    @Column(name="total_price")
+    private double totalPrice;
+
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -39,6 +46,4 @@ public class Product {
     public void preUpdate(){
         updatedAt = LocalDateTime.now();
     }
-
-
 }
